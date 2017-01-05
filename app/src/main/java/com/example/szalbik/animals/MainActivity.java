@@ -11,25 +11,26 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity {
 
     ImageView horse;
-
-    MediaPlayer mp = MediaPlayer.create(this, R.raw.horse);
+    MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mp = MediaPlayer.create(this, R.raw.horse);
         horse = (ImageView) findViewById(R.id.imageView);
 
         horse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mp.isPlaying()) {
-                    mp.reset();
+                    mp.stop();
                 } else {
                     mp.start();
                 }
             }
         });
     }
+
 }
